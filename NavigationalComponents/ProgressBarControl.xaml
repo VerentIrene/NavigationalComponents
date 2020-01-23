@@ -1,0 +1,23 @@
+﻿<Window x:Class="NavigationalComponents.ProgressBarControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NavigationalComponents"
+             mc:Ignorable="d" 
+             Height="180" Width="390"
+             WindowStartupLocation="CenterScreen"
+             Background="White"
+             ResizeMode="NoResize"
+             BorderThickness="1"
+             BorderBrush="LightGray"
+             AllowsTransparency="True"
+             WindowStyle="None"
+             SizeToContent="Height">
+    <Grid>
+        <StackPanel Margin="0,50,0.4,50">
+            <TextBlock x:Name="closing_tb" Text="Closing" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="147,5,156.4,5" Height="25" Width="87" FontSize="18"/>
+            <ProgressBar x:Name="closing_pb" Value ="0" ValueChanged="OnValueChangedClosing_pb" HorizontalAlignment="Center" VerticalAlignment="Bottom" Maximum="100" Margin="5 5 5 5" Height="20" Width="300" FlowDirection="LeftToRight"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -40,6 +40,9 @@
             <TextBlock x:Name="breadCumb_tb" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="80,10,0,0" FontSize="18" FontWeight="Bold" FontFamily="Champagne &amp; Limousines" Foreground="White"/>
             <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" x:Name="closeWindow_btn" Width="60" Height="60" HorizontalAlignment="Right" Click="OnClickCloseWindow_btn">
                 <materialDesign:PackIcon Kind="CloseBoxOutline" Foreground="#FFBF0808" Width="30" Height="30"/>
+                <Button.ToolTip>
+                    <ToolTip HasDropShadow="False" Background="Gray" Foreground="White">Close</ToolTip>
+                </Button.ToolTip>
             </Button>
         </Grid>
         <Grid x:Name="leftNavigationBar_grd" Width="60" HorizontalAlignment="Left">
@@ -48,33 +51,51 @@
                     <TextBlock x:Name="wissen_tb" Text="Wissen" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="36" Foreground="White" FontFamily="Trebuchet MS"/>
                     <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" x:Name="closeMenu_btn" Width="60" Height="60" VerticalAlignment="Top" Visibility="Collapsed" Click="OnClickCloseMenu_btn">
                         <materialDesign:PackIcon Kind="ArrowLeft" Foreground="White"/>
+                        <Button.ToolTip>
+                            <ToolTip HasDropShadow="False" Background="Gray" Foreground="White">Minimize Menu</ToolTip>
+                        </Button.ToolTip>
                     </Button>
                     <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" x:Name="openMenu_btn" Width="60" Height="60" VerticalAlignment="Top" Click="OnClickOpenMenu_btn">
                         <materialDesign:PackIcon Kind="Menu" Foreground="White"/>
+                        <Button.ToolTip>
+                            <ToolTip HasDropShadow="False" Background="Gray" Foreground="White">Menu</ToolTip>
+                        </Button.ToolTip>
                     </Button>
                 </StackPanel>
                 <ListView Name="menu_lv" Background="#FF008BE4" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontFamily="Champagne &amp; Limousines" FontSize="18" BorderBrush="#FF008BE4">
-                    <ListViewItem Height="45" Padding="0">
-                        <StackPanel Name="home_sp" Orientation="Horizontal" Margin="10 0" MouseDown="OnDownHome_sp">
+                    <ListViewItem x:Name="home_lvi" Height="45" Padding="0" PreviewMouseLeftButtonDown="OnPreviewMouseLeftButtonDownHome_lvi">
+                        <StackPanel Name="home_sp" Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="Home" Width="20" Height="20" Foreground="White" Margin="10" VerticalAlignment="Center"/>
                             <TextBlock Name="home_tb" Text="Home" Margin="10" />
                         </StackPanel>
+                        <ListViewItem.ToolTip>
+                            <ToolTip HasDropShadow="False" Background="Gray" Foreground="White">Home</ToolTip>
+                        </ListViewItem.ToolTip>
                     </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem x:Name="profile_lvi" Height="45" Padding="0" PreviewMouseLeftButtonDown="OnPreviewMouseLeftButtonDownProfile_lvi">
                         <StackPanel Name="profile_sp" Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="Account" Width="20" Height="20" Foreground="White" Margin="10" VerticalAlignment="Center"/>
                             <TextBlock Name="profile_tb" Text="Profile" Margin="10"/>
                         </StackPanel>
+                        <ListViewItem.ToolTip>
+                            <ToolTip HasDropShadow="False" Background="Gray" Foreground="White">Profile</ToolTip>
+                        </ListViewItem.ToolTip>
                     </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem Height="45" Padding="0" x:Name="about_lvi" PreviewMouseLeftButtonDown="OnPreviewMouseLeftButtonDownAbout_lvi">
                         <StackPanel Name="about_sp" Orientation="Horizontal" Margin="10 0">
                             <materialDesign:PackIcon Kind="AboutCircle" Width="20" Height="20" Foreground="White" Margin="10" VerticalAlignment="Center"/>
                             <TextBlock Name="about_tb" Text="About" Margin="10"/>
                         </StackPanel>
+                        <ListViewItem.ToolTip>
+                            <ToolTip HasDropShadow="False" Background="Gray" Foreground="White">About</ToolTip>
+                        </ListViewItem.ToolTip>
                     </ListViewItem>
                 </ListView>
             </StackPanel>
         </Grid>
-        <DockPanel HorizontalAlignment="Left" Height="540" LastChildFill="False" Margin="60,60,0,0" VerticalAlignment="Top" Width="1020"/>
+        <DockPanel x:Name="bodyPanel_dp" HorizontalAlignment="Left" Height="540" LastChildFill="False" Margin="60,60,0,0" VerticalAlignment="Top" Width="1020">
+            <local:CustomSearchField Height="49" VerticalAlignment="Top" Width="434"/>
+            <local:CustomToggleButton Height="Auto" Width="29" Margin="0,0,0,511"/>
+        </DockPanel>
     </Grid>
 </Window>
